@@ -1,5 +1,5 @@
 
-package Model;
+package com.raul.hotel.hotel_system.Model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

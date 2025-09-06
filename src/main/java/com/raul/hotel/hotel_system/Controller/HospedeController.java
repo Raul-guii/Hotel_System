@@ -1,8 +1,8 @@
 
-package Controller;
+package com.raul.hotel.hotel_system.Controller;
 
-import Model.Hospede;
-import Repository.HospedeRepository;
+import com.raul.hotel.hotel_system.Model.Hospede;
+import com.raul.hotel.hotel_system.repository.HospedeRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,3 +53,4 @@ public class HospedeController {
         hospedeRepository.deleteById(id);
     }
 }
+

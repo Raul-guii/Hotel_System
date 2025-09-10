@@ -31,3 +31,13 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Angular / Node ###
+node_modules/
+dist/
+tmp/
+out-tsc/
+package-lock.json
+yarn.lock
+npm-debug.log
+yarn-error.log

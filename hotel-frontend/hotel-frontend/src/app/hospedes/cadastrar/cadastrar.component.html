@@ -1,0 +1,17 @@
+<h2>Cadastrar Hóspede</h2>
+<form (ngSubmit)="cadastrarHospede()">
+  <label>Nome:</label>
+  <input type="text" [(ngModel)]="hospede.nome" name="nome" required />
+
+  <label>CPF:</label>
+  <input type="text" [(ngModel)]="hospede.cpf" name="cpf" required />
+
+  <label>RG:</label>
+  <input type="text" [(ngModel)]="hospede.rg" name="rg" required />
+
+  <label>Telefone:</label>
+  <input type="text" [(ngModel)]="hospede.telefone" name="telefone" required />
+
+  <button type="submit">Cadastrar</button>
+</form>
+

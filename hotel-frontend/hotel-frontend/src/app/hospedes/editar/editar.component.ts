@@ -10,20 +10,20 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
   standalone: true,
   imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './editar.component.html',
-  styleUrl: './editar.component.css'
+  styleUrls: ['./editar.component.css']
 })
-export class EditarComponent {
+export class EditarHospedeComponent {
    hospede: Hospede = {} as Hospede;
 
   constructor(private hospedeService: HospedeService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
     const id = this.route.snapshot.params['id'];
-    this.hospedeService.buscarPorId(id).subscribe(data => this.hospede = data);
+    this.hospedeService.buscarHospedePorId(id).subscribe(data => this.hospede = data);
   }
 
   salvar() {
-    this.hospedeService.editar(this.hospede).subscribe(() => {
+    this.hospedeService.editarHospede(this.hospede).subscribe(() => {
       this.router.navigate(['/listar']);
     });
   }

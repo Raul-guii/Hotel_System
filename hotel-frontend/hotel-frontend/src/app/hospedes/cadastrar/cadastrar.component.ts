@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
 import { HospedeService } from '../../services/hospede';
 import { FormsModule } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-cadastrar',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, RouterModule],
   templateUrl: './cadastrar.component.html',
   styleUrls: ['./cadastrar.component.css']
 })
-export class CadastrarComponent {
+export class CadastrarHospedeComponent {
   hospede = {
   nome: '',
   cpf: '',
@@ -17,13 +18,18 @@ export class CadastrarComponent {
   telefone: ''
   }
 
-  constructor(private hospedeService: HospedeService) {}
+  constructor(private hospedeService: HospedeService,
+              private router: Router
+  ) {}
 
   cadastrarHospede() {
-    this.hospedeService.cadastrar(this.hospede).subscribe({
+    this.hospedeService.cadastrarHospede(this.hospede).subscribe({
       next: () => {
         console.log('Hospede cadastrado!');
-        this.hospede = { nome: '', cpf: '', rg: '', telefone: '' }; // limpa o formulário
+
+        this.router.navigate(['/quartos/cadastrar'], { state: { hospede: this.hospede } });
+
+        this.hospede = { nome: '', cpf: '', rg: '', telefone: '' }; 
       },
       error: (err) => console.error('Erro ao cadastrar', err)
     });

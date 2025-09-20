@@ -1,19 +1,23 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { ListarComponent } from './listar/listar.component';
-import { CadastrarComponent } from './cadastrar/cadastrar.component';
-import { EditarComponent } from './editar/editar.component';
-
+import { ListarHospedeComponent } from './listar/listar.component';
+import { CadastrarHospedeComponent } from './cadastrar/cadastrar.component';
+import { EditarHospedeComponent } from './editar/editar.component';
 
 @NgModule({
+
   imports: [
-    ListarComponent,
-    CadastrarComponent,
     CommonModule,
+    FormsModule,
+    ListarHospedeComponent,
+    CadastrarHospedeComponent,
+    EditarHospedeComponent,
     RouterModule.forChild([
-      { path: 'listar', component: ListarComponent },
-      { path: 'cadastrar', component: CadastrarComponent }
+      { path: 'listar', component: ListarHospedeComponent },
+      { path: 'cadastrar', component: CadastrarHospedeComponent },
+      { path: 'editar/:id', component: EditarHospedeComponent }
     ])
   ]
 })

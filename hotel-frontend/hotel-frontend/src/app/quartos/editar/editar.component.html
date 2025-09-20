@@ -1,0 +1,15 @@
+<h2>Editar Quarto</h2>
+
+<form (ngSubmit)="editarQuarto()">
+  <label>Número:</label>
+  <input [(ngModel)]="quarto.numero" name="numero" required />
+
+  <label>Status:</label>
+  <select [(ngModel)]="quarto.status" name="status" required>
+    <option value="DISPONIVEL">DISPONIVEL</option>
+    <option value="OCUPADO">OCUPADO</option>
+    <option value="MANUTENCAO">MANUTENÇÃO</option>
+  </select>
+
+  <button type="submit">Atualizar</button>
+</form>

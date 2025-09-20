@@ -1,0 +1,22 @@
+<h2>Lista de Quartos</h2>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Número</th>
+      <th>Status</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let quarto of quarto">
+      <td>{{ quarto.numero }}</td>
+      <td>{{ quarto.status }}</td>
+      <td>
+        <button (click)="editarQuarto(quarto.id)">Editar</button>
+        <button (click)="deletarQuarto(quarto.id!)">Deletar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+

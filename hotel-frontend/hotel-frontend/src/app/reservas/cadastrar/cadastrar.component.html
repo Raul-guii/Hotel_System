@@ -1,0 +1,22 @@
+<h2>Cadastrar Reserva</h2>
+
+<form (ngSubmit)="salvarReserva()">
+
+  <label for="hospede">Hóspede:</label>
+  <input id="hospede" type="text" 
+         [value]="reserva.hospede?.nome" readonly>
+
+  <label for="quarto">Quarto:</label>
+  <input id="quarto" type="text" 
+         [value]="reserva.quartos?.numero" readonly>
+
+
+  <label for="dataInicio">Data Início:</label>
+  <input id="dataInicio" type="date" [(ngModel)]="reserva.dataInicio" name="dataInicio" required>
+
+ 
+  <label for="dataFim">Data Fim:</label>
+  <input id="dataFim" type="date" [(ngModel)]="reserva.dataFim" name="dataFim" required>
+
+  <button type="submit">Salvar Reserva</button>
+</form>

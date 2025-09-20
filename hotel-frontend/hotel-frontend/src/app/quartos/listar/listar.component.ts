@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HospedeService, Hospede } from '../../services/hospede';
+import { QuartoService, Quarto } from '../../services/quarto';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
-
 @Component({
   selector: 'app-listar',
   standalone: true,
@@ -10,33 +9,33 @@ import { RouterModule, Router } from '@angular/router';
   templateUrl: './listar.component.html',
   styleUrls: ['./listar.component.css']
 })
-export class ListarHospedeComponent implements OnInit {
-  hospedes: Hospede[] = [];
+export class ListarQuartoComponent {
+ quarto: Quarto[] = [];
 
   constructor(
-    private hospedeService: HospedeService,
+    private quartoService: QuartoService,
     private router: Router   
   ) {}
 
   ngOnInit(): void {
-    this.carregarHospedes();
+    this.carregarQuartos();
   }
 
-  carregarHospedes() {
-    this.hospedeService.listarHospede().subscribe({
-      next: (dados) => this.hospedes = dados,
+  carregarQuartos() {
+    this.quartoService.listarQuarto().subscribe({
+      next: (dados) => this.quarto = dados,
       error: (err) => console.error('Erro ao buscar hóspedes', err)
     });
   }
 
-  deletarHospede(id: number) {
-    this.hospedeService.deletarHospede(id).subscribe({
-      next: () => this.carregarHospedes(),
+  deletarQuarto(id: number) {
+    this.quartoService.deletarQuarto(id).subscribe({
+      next: () => this.carregarQuartos(),
       error: (err) => console.error('Erro ao deletar hóspede', err)
     });
   }
 
-  editarHospede(id: number): void {
-    this.router.navigate([`/editar/${id}`]); 
+  editarQuarto(id: number): void {
+    this.router.navigate([`/quartos/editar`, id]); 
   }
 }

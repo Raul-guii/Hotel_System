@@ -9,5 +9,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface ReservaRepository extends JpaRepository<Reserva, Integer>{
 
     public List<Reserva> findByQuartos_IdAndDataFimAfterAndDataInicioBefore(Integer id, LocalDateTime data_inicio, LocalDateTime data_fim);
-    
+    public List<Reserva> findByDataFimBefore(LocalDateTime dataFim);
 }

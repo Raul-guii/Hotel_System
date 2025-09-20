@@ -9,7 +9,9 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.util.List;
 
 @Entity
 @Table(name = "quartos")
@@ -23,7 +25,11 @@ public class Quartos {
      private String numero;
      
      @Enumerated(EnumType.STRING)
-     private StatusQuarto status;
+     private StatusQuarto status = StatusQuarto.DISPONIVEL;
+     
+     @OneToMany(mappedBy = "quarto")
+     private List<Hospede> hospedes;
+
      
      public Quartos(){
          

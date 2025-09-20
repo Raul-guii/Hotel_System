@@ -10,6 +10,12 @@ export interface Hospede {
   telefone: string;
 }
 
+export interface Quarto {
+  id: number;
+  numero: string;
+  status: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -17,11 +23,11 @@ export class HospedeService {
   private apiUrl = 'http://localhost:8080/hospedes';
   constructor(private http: HttpClient) {}
 
-  listar(): Observable<Hospede[]> {
+  listarHospede(): Observable<Hospede[]> {
   return this.http.get<Hospede[]>('http://localhost:8080/hospedes');
   }
 
-  cadastrar(hospede:Omit<Hospede, 'id'>): Observable<Hospede> {
+  cadastrarHospede(hospede:Omit<Hospede, 'id'>): Observable<Hospede> {
     return this.http.post<Hospede>(this.apiUrl, hospede);
   }
 
@@ -33,11 +39,7 @@ export class HospedeService {
     return this.http.delete(`http://localhost:8080/hospedes/${id}`);
   }
 
-  buscarPorId(id: number): Observable<Hospede> {
+  buscarHospedePorId(id: number): Observable<Hospede> {
   return this.http.get<Hospede>(`${this.apiUrl}/${id}`);
-  }
-
-  editar(hospede: Hospede): Observable<Hospede> {
-  return this.http.put<Hospede>(`${this.apiUrl}/${hospede.id}`, hospede);
   }
 }
